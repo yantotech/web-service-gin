@@ -1,0 +1,19 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary
+*.test
+
+# Output folder
+bin/
+
+# Vendor
+vendor/
+
+# IDE
+.vscode/
+.idea/
