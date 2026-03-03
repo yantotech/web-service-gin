@@ -80,13 +80,20 @@ func main() {
 	  "instruksi"
    }
 3. main() menjadikan function ini merupakan function yang pertama dijalankan saat program dieksekusi
-4.
+4. router := gin.Default() untuk membuat engine/router yang berfungsi sebagai mesin utama dari server
+5. router.GET("/albums", getAlbums) untuk membuat endpoint HTTP GET dengan ketentuan
+   a) jika ada request GET ke URL /albums, maka akan menjalankan function getAlbums
+6. router.Run("localhost:8080") berfungsi menjalankan server, sehingga bisa diakses lewat browser
 */
 
 // getAlbums responds with the list of all albums as JSON.
 func getAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
+
+/*
+1.
+*/
 
 // postAlbums adds an album from JSON received in the request body.
 func postAlbums(c *gin.Context) {
