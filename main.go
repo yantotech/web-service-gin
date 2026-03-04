@@ -92,7 +92,12 @@ func getAlbums(c *gin.Context) {
 }
 
 /*
-1.
+1. getAlbums merupakan fungsi yang digunakan untuk menangani HTTP request dan mengirimkan response dalam format JSON
+2. c *gin.Context merupakan parameter berjenis pointer yang mengarah ke gin.Context
+3. c.IndentedJSON(http.StatusOK, albums) bagian ini berfungsi untuk mengirimkan response ke client
+   a. http.StatusOK untuk mengirimkan kode status HTTP 200 OK
+   b. albums merupakan jenis data yang akan dikirimkan
+   c. IndentedJSON untuk mengirimkan response dalam bentuk JSON dengan indentasi
 */
 
 // postAlbums adds an album from JSON received in the request body.
@@ -110,6 +115,12 @@ func postAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusCreated, newAlbum)
 }
 
+/*
+1. var newAlbum album adalah kode untuk membuat variabel baru bernama newAlbum dengan tipe album
+2. c.BindJSON(&newAlbum) berfungsi untuk membaca JSON dari request body dan mengubah JSON tersebut menjadi struct pada newAlbum
+3. albums = append(albums, newAlbum) berfungsi untuk menambahkan newAlbum kedalam slice albums
+*/
+
 // getAlbumByID locates the album whose ID value matches the id
 // parameter sent by the client, then returns that album as a response.
 func getAlbumByID(c *gin.Context) {
@@ -125,3 +136,10 @@ func getAlbumByID(c *gin.Context) {
 	}
 	c.IndentedJSON(http.StatusNotFound, gin.H{"message": "album not found"})
 }
+
+/*
+1. id := c.Param("id") berfungsi untuk mengambil parameter id dari URL
+2. for _, a := range albums berfungsi untuk melakukan perulangan terhadap semua data di slice albums.
+3. if a.ID == id berfungsi untuk mengecek apakah ID album cocok dengan ID dari URL
+4.
+*/
